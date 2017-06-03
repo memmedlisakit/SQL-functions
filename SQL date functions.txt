@@ -1,0 +1,36 @@
+DATE_ADD ile bir tarixin uzerine istenilen bir tarix INTERVALni elave ede bilersiniz. BU funksiya bezi deyer novu ile yazilamalidir. Yeni tarixin uzerine hansi deyer novu INTERVALini elave 
+etmek lazimdir esaslardan (MINUTE, HOUR, DAY, WEEK, MONTH, YEAR) kimi. Misalchun bir sifarish sifarishID(1), mehshuladi(berde_pendiri), sifarishtarixi(2017-10-25) bele bir tabelimiz var onun 
+sifarish tarixinin uzerinine 30 gun elave edib onun odenish tarixini alaq. Bu funksiya bele yazilir SELECT sifarishID, DATE_ADD(sifarishtarixi, INTERVAL 30 DAY) AS shifarish_odenish_tarixi FROM sifarishler.
+Netice sifarishID(1) sifarish_odenish_tarixi(2017-11-25).
+
+DATE_FORMAT tarix ve saat kimi datalarimizi ferqli formatada gorunmesi uchun yazlan bir funksiyadir. Bu funksiyani yazmaq uchun bezi formatlardan istifade olunur
+esaslardan misalchun:
+
+%a qisaldilmish hefte adi (Sun-Sat) 
+%b qisaldilmish ay adi (Jan-Dec), 
+%c ay sayisi (0-12)
+%m ay sayisi (00-12)
+%d aydaki gun sayilari (00-31)
+%e aydaki gun sayilari (0-31)
+%H saat (00-23)
+%i deqiqe sayilari (00-59)
+%j ildeki gun sayi (001-366)
+%M ay adlari (January-December)
+%p AM ya PM
+%r saat, 12-saat (hh:mm:ss sonra AM veya PM gelir)
+%T saat, 24 saat (hh:mm:ss)
+%W heftenin gun adi (Sunday-Saturday)
+%Y il, sayi, 4 reqem 
+%y il, sayi, 2 reqem 
+
+Indi biz bu kimi formatlarindan bezilerini yazmaq unchun NOW (NOW funksiyasi indiki tarix ve saati gostermek cuhun istifade olunur) funksiyasinda istifade edeceyik.
+ 
+DATE_FORMAT(NOW(), '%m-%d-%Y')       06-03-2017 
+DATE_FORMAT(NOW(), '%d %b %y')       03 Jun 17
+DATE_FORMAT(NOW(), '%d %M %Y %T')    03 June 2017 06:40:30
+
+DATE_SUB funksiya anlayisi DATE_ADD funsiyasinin tam eksidir. DATE_SUB ile bir tarixden instenilen bir tarix INTERVALini cixara bilersiniz. Bu funksiya bezi deyer novu ile
+yazilmalidir. Yeni tarixden hansi deyer novu INTERVALini chixmaq lazimdir esaslardan (MINUTE, HOUR, DAY, WEEK, MONTH, YEAR, ) kimi. Misalchun bir sifarish sifarishID(1),
+mehsuladi(quba_almasi), sifarishtarixi(2017-10-25) bele bir tabelimiz var ve bu tarixden 10 gun chixaraq.
+Bu funksiya bele yazilir SELECT sifarishID, DATE_SUB(sifarishtarixi, INTERVAL 10 DAY) AS tarixden_chixarma FROM sifarishler.
+Netice sifarishID(1) tarxden_chixarma(2017-10-15).
